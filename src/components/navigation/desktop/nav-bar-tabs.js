@@ -6,7 +6,7 @@ export const NavBarTabs = () => {
     <div className="nav-bar__tabs">
       {/* <h1 color="white">Mayank</h1> */}
       <NavBarTab path="/profile" label="Dashboard" />
-      <NavBarTab path="/public" label="Public" />
+      <NavBarTab path="/public" label="Issue a New Request" />
       <NavBarTab path="/protected" label="Protected" />
       <NavBarTab path="/admin" label="Admin" />
     </div>
