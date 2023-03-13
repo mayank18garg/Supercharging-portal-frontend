@@ -1,0 +1,27 @@
+
+
+.chart-grid-input{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.chart-grid-date{
+    /* background-color: white; */
+    /* width: 50px; */
+    /* border-width: 5px; */
+  /* border-color: red; */
+  /* border-style: dashed; */
+  /* padding: 5px; */
+}
+
+.chart-grid-site{
+
+}
+
+.chart-grid-kpi{
+    border-color: red;
+    /* border-style: solid; */
+    border-width: 1px;
+    /* height: 700; */
+}
