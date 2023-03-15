@@ -111,7 +111,7 @@ export default function IssueTicTable({issueTicketData}) {
   };
 
   return (
-    <Paper sx={{ maxWidth: 700, overflow: 'hidden' }}>
+    <Paper sx={{ width: 700, overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 4400 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
