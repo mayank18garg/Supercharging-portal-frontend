@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logoUrl from './logo.svg';
-export const NavBarBrand = () => {
+export const NavBarBrand = ({site_id, site_name}) => {
   return (
     <div className="nav-bar__brand">
-      <NavLink to="/">
+      <NavLink to="/" state={{site_id:site_id, site_name:site_name}}>
         <img
           className="nav-bar__logo"
           // src="https://cdn.auth0.com/blog/hub/code-samples/hello-world/auth0-logo.svg"

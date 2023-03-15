@@ -11,6 +11,7 @@ import {styled} from '@mui/material/styles';
 import { blue } from '@mui/material/colors';
 import { getAllUserData} from '../../services/message.service';
 import { PageLoader } from '../page-loader';
+import {NavLink} from "react-router-dom"
 
 // import { makeStyles } from '@mui/material/styles';
 
@@ -32,6 +33,11 @@ const columns = [
     // align: 'right',
     // format: (value) => value.toLocaleString('en-US'),
   },
+  {
+    id: 'view',
+    label: 'View',
+    width: 50
+  }
 ];
 
 
@@ -111,14 +117,23 @@ export default function ViewSite() {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.trt_id}>
                     {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <StyledTableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                        </StyledTableCell>
-                      );
+                      if(column.id === 'view'){
+                        return(
+                          <StyledTableCell key={column.id} align={column.align}>
+                            <NavLink to='/' style={{color:'black'}} state={{site_id: row.trt_id, site_name: row.siteName}}> View </NavLink>
+                          </StyledTableCell>
+                        );
+                      }
+                      else{
+                        const value = row[column.id];
+                        return (
+                          <StyledTableCell key={column.id} align={column.align}>
+                            {column.format && typeof value === 'number'
+                              ? column.format(value)
+                              : value}
+                          </StyledTableCell>
+                        );
+                      }
                     })}
                   </TableRow>
                 );
