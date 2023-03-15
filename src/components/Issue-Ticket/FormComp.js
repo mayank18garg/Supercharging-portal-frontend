@@ -34,7 +34,7 @@ const errormessage = (
   </Message>
 );
 
-export const FormComp = ({issueTicketData, setissueTicketData}) => {
+export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData}) => {
     const { user } = useAuth0();
     const userEmail = user.name;
     const [formValue, setFormValue] = useState({
@@ -50,7 +50,7 @@ export const FormComp = ({issueTicketData, setissueTicketData}) => {
             console.error("Form Error");
             return;
         }
-        sendFormData({formValue, userEmail }).then((response) => {
+        sendFormData({formValue, userEmail, trt_id, site_name }).then((response) => {
           if(response.data == null){
             toaster.push(errormessage,{placement, duration: 5000} );
           }

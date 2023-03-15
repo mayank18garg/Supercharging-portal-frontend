@@ -17,6 +17,8 @@ export const PublicPage = () => {
   if(location.state == null){
     return <Navigate replace to="/admin" />;
   }
+  const trt_id = location.state ? location.state.site_id : "";
+  const site_name = location.state ? location.state.site_name : "";
   return (
     <PageLayout site_id={location.state.site_id} site_name={location.state.site_name}>
       
@@ -24,12 +26,12 @@ export const PublicPage = () => {
           {location.state.site_name}
       </h2>
       <div className="form-grid-container">
-        <IssueTictable issueTicketData={issueTicketData} />
+        <IssueTictable trt_id={trt_id} issueTicketData={issueTicketData} />
         <h3 id="page-title" className="content__title" style={{textAlign: 'center'}}>
           Report a New Issue
         </h3>
         
-          <FormComp issueTicketData={issueTicketData} setissueTicketData={setissueTicketData} />
+          <FormComp trt_id={trt_id} site_name={site_name} issueTicketData={issueTicketData} setissueTicketData={setissueTicketData} />
           
         {/* <div className="content__body">
           <p id="page-description">

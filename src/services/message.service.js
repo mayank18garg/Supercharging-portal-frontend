@@ -82,7 +82,7 @@ export const getAdminResource = async () => {
   };
 };
 
-export const sendFormData = async ({formValue, userEmail}) => {
+export const sendFormData = async ({formValue, userEmail, trt_id, site_name}) => {
 
   console.log("Type:", formValue.textarea);
   // const dataSend = JSON.stringify(formValue)
@@ -97,6 +97,8 @@ export const sendFormData = async ({formValue, userEmail}) => {
     // },
     data: {
       userEmail: userEmail,
+      trt_id: trt_id,
+      site_name: site_name,
       title: formValue.title,
       type: formValue.type,
       description: formValue.description
@@ -115,13 +117,14 @@ export const sendFormData = async ({formValue, userEmail}) => {
   };
 };
 
-export const getissueTickets = async(userEmail) => {
+export const getissueTickets = async(userEmail, trt_id) => {
   
   const config = {
     url: `${apiServerUrl}/api/issueTicket/`,
     method: "GET",
     params:{
-      userEmail: userEmail
+      userEmail: userEmail,
+      trt_id: trt_id
     },
     headers:{
       "Content-Type": "application/json"

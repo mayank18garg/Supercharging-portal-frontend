@@ -63,7 +63,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   //   }
   // });
 
-export default function IssueTicTable({issueTicketData}) {
+export default function IssueTicTable({trt_id, issueTicketData}) {
   // const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(2);
@@ -75,7 +75,7 @@ export default function IssueTicTable({issueTicketData}) {
   React.useEffect(() => {
     let isMounted = true;
     const getMessage = async () => {
-      const {data, error} = await getissueTickets(userEmail);
+      const {data, error} = await getissueTickets(userEmail, trt_id);
       if(!isMounted){
         return;
       }
@@ -94,7 +94,7 @@ export default function IssueTicTable({issueTicketData}) {
     return () => {
       isMounted = false;
     };
-  }, [userEmail, issueTicketData]);
+  }, [userEmail, trt_id, issueTicketData]);
 
   if(message.length > 0){
     message.map((data) => {['_id', 'userEmail', '__v'].forEach(e => delete data[e]);});
