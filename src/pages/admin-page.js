@@ -3,6 +3,7 @@ import { CodeSnippet } from "../components/code-snippet";
 import { PageLayout } from "../components/page-layout";
 import { getAdminResource } from "../services/message.service";
 import { AdminMenu } from "../components/admin-menu";
+import ViewSite from "../components/admin-components/viewSite";
 
 export const AdminPage = () => {
   // const [message, setMessage] = useState("");
@@ -61,7 +62,7 @@ export const AdminPage = () => {
   return (
     // <div>
     <PageLayout>
-    <AdminMenu></AdminMenu>  
+      <ViewSite />
     </PageLayout>
     
     // </div>
