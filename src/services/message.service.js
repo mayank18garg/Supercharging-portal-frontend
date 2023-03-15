@@ -135,3 +135,20 @@ export const getissueTickets = async(userEmail) => {
     error,
   };
 }
+
+export const getAllUserData = async() => {
+  const config = {
+    url: `${apiServerUrl}/api/userData/admin/`,
+    method: "GET",
+    headers:{
+      "Content-Type": "application/json"
+    }
+  }
+
+  const {data, error} = await callExternalApi({config});
+
+  return {
+    data: data || null,
+    error,
+  };
+}
