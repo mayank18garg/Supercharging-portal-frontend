@@ -15,7 +15,7 @@ export const ProfilePage = () => {
 
   console.log(location);
   if(location.state == null || location.state.site_id == null){
-    return <Navigate replace to="/admin" />;
+    return <Navigate replace to="/" />;
   }
 
   return (

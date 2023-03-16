@@ -13,7 +13,7 @@ export const HomePage = () => {
 
 
   if(location.state == null || location.state.site_id == null){
-    return <Navigate replace to="/admin" />;
+    return <Navigate replace to="/" />;
   }
 
     return ( <PageLayout site_id={location.state.site_id} site_name={location.state.site_name} > 

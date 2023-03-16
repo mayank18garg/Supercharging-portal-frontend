@@ -8,7 +8,7 @@ export const NavBarTabs = ({site_id,site_name}) => {
       <NavBarTab path="/profile" label="Dashboard" site_id={site_id} site_name={site_name} />
       <NavBarTab path="/public" label="Issue a New Request" site_id={site_id} site_name={site_name}/>
       <NavBarTab path="/protected" label="Protected" />
-      <NavBarTab path="/admin" label="Admin" />
+      <NavBarTab path="/" label="MultiSite View" />
     </div>
   );
 };

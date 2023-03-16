@@ -120,7 +120,7 @@ export default function ViewSite() {
                       if(column.id === 'view'){
                         return(
                           <StyledTableCell key={column.id} align={column.align}>
-                            <NavLink to='/' style={{color:'black'}} state={{site_id: row.trt_id, site_name: row.siteName}}> View </NavLink>
+                            <NavLink to='/home' style={{color:'black'}} state={{site_id: row.trt_id, site_name: row.siteName}}> View </NavLink>
                           </StyledTableCell>
                         );
                       }

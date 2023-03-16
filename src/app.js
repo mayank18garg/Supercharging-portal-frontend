@@ -34,7 +34,7 @@ export const App = () => {
   return (
     <Routes>
       <Route 
-        exact path="/"  
+        exact path="/home"
         // element={< Navigate replace to="/profile" />}
         element={<HomePage/>}
       />
@@ -45,7 +45,7 @@ export const App = () => {
       <Route path="/public" element={<PublicPage />} />
       <Route path="/protected" element={<ProtectedPage />} />
       <Route element={<PrivateRoute /> }>
-        <Route path="/admin" exact element={<AdminPage />} />
+        <Route path="/" exact element={<AdminPage />} />
       </Route>
       
       <Route path="*" element={<NotFoundPage />} />
