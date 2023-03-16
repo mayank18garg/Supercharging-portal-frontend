@@ -5,67 +5,55 @@ import { getAdminResource } from "../services/message.service";
 import { AdminMenu } from "../components/admin-menu";
 import ViewSiteAdmin from "../components/admin-components/viewSiteAdmin";
 import ViewSiteUser from "../components/multiview-site";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const MultiSitePage = () => {
-  // const [message, setMessage] = useState("");
+  const {isAuthenticated, getIdTokenClaims, loginWithRedirect, getAccessTokenSilently} = useAuth0();
+    const [token, setToken] = useState(['']);
+    // const [message, setMessage] = useState("");
 
-  // useEffect(() => {
-  //   let isMounted = true;
+    useEffect(() => {
+        let isMounted = true;
 
-  //   const getMessage = async () => {
-  //     const { data, error } = await getAdminResource();
+        const getMessage = async () => {
+            const accessToken = await getIdTokenClaims();
+            // const { data, error } = await getAdminResource(accessToken);
 
-  //     if (!isMounted) {
-  //       return;
-  //     }
+            if (!isMounted) {
+                return;
+            }
 
-  //     if (data) {
-  //       setMessage(JSON.stringify(data, null, 2));
-  //     }
+            if (accessToken) {
+                // setMessage(JSON.stringify(data, null, 2));
+                setToken(accessToken['http://localhost:4040//roles']);
+            }
 
-  //     if (error) {
-  //       setMessage(JSON.stringify(error, null, 2));
-  //     }
-  //   };
+            else{
+                console.log("error");
+                setToken(null);
+            }
+        };
 
-  //   getMessage();
+        getMessage();
 
-  //   return () => {
-  //     isMounted = false;
-  //   };
-  // }, []);
+        return () => {
+        isMounted = false;
+        };
+    }, [getAccessTokenSilently]);
 
-  // return (
-  //   <PageLayout>
-  //     <div className="content-layout">
-  //       <h1 id="page-title" className="content__title">
-  //         Admin Page
-  //       </h1>
-  //       <div className="content__body">
-  //         <p id="page-description">
-  //           <span>
-  //             This page retrieves an <strong>admin message</strong> from an
-  //             external API.
-  //           </span>
-  //           <span>
-  //             <strong>
-  //               Only authenticated users with the{" "}
-  //               <code>read:admin-messages</code> permission should access this
-  //               page.
-  //             </strong>
-  //           </span>
-  //         </p>
-  //         <CodeSnippet title="Admin Message" code={message} />
-  //       </div>
-  //     </div>
-  //   </PageLayout>
-  // );
+    const adminRoles = ['Admin'];
+    const userRoles = ['User']
+    console.log(token);
   return (
     // <div>
     <PageLayout>
-      <ViewSiteUser />
+      {token?.find(role => adminRoles.includes(role)) ? <ViewSiteAdmin />
+        : (token?.find(role => userRoles.includes(role)) ? <ViewSiteUser/>
+        :
+        null)
+      }
     </PageLayout>
     
     // </div>
-  )
+  );
 };
