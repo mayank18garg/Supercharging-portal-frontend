@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import {styled} from '@mui/material/styles';
 import { blue } from '@mui/material/colors';
 import { getissueTickets } from '../../services/message.service';
-import { useAuth0 } from '@auth0/auth0-react';
+
 
 // import { makeStyles } from '@mui/material/styles';
 
@@ -69,13 +69,11 @@ export default function IssueTicTable({trt_id, issueTicketData}) {
   const [rowsPerPage, setRowsPerPage] = React.useState(2);
   const [message, setMessage] = React.useState([]);
 
-  const { user } = useAuth0();
-  const userEmail = user.name;
 
   React.useEffect(() => {
     let isMounted = true;
     const getMessage = async () => {
-      const {data, error} = await getissueTickets(userEmail, trt_id);
+      const {data, error} = await getissueTickets(trt_id);
       if(!isMounted){
         return;
       }
@@ -94,7 +92,7 @@ export default function IssueTicTable({trt_id, issueTicketData}) {
     return () => {
       isMounted = false;
     };
-  }, [userEmail, trt_id, issueTicketData]);
+  }, [trt_id, issueTicketData]);
 
   if(message.length > 0){
     message.map((data) => {['_id', 'userEmail', '__v'].forEach(e => delete data[e]);});

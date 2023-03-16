@@ -117,13 +117,12 @@ export const sendFormData = async ({formValue, userEmail, trt_id, site_name}) =>
   };
 };
 
-export const getissueTickets = async(userEmail, trt_id) => {
+export const getissueTickets = async(trt_id) => {
   
   const config = {
     url: `${apiServerUrl}/api/issueTicket/`,
     method: "GET",
     params:{
-      userEmail: userEmail,
       trt_id: trt_id
     },
     headers:{
