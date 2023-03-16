@@ -44,10 +44,13 @@ export const App = () => {
       />
       <Route path="/reportIssue" element={<ReportIssuePage />} />
       <Route path="/protected" element={<ProtectedPage />} />
-      <Route element={<PrivateRoute /> }>
+      {/* <Route element={<PrivateRoute /> }>
         <Route path="/" exact element={<MultiSitePage />} />
-      </Route>
-      
+      </Route> */}
+      <Route
+        path="/"
+        element={<AuthenticationGuard component={MultiSitePage} />}
+      />
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/callback" element={<CallbackPage />} />
     </Routes>

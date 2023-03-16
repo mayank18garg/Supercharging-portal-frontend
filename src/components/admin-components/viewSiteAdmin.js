@@ -54,7 +54,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   }));
 
 
-export default function ViewSite() {
+export default function ViewSiteAdmin() {
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(2);

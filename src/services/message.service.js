@@ -154,3 +154,23 @@ export const getAllUserData = async() => {
     error,
   };
 }
+
+export const getUserData = async(userEmail) => {
+  const config = {
+    url: `${apiServerUrl}/api/userData/`,
+    method: "GET",
+    params:{
+      userEmail: userEmail
+    },
+    headers:{
+      "Content-Type": "application/json"
+    }
+  }
+
+  const {data, error} = await callExternalApi({config});
+
+  return {
+    data: data || null,
+    error,
+  };
+}

@@ -3,7 +3,8 @@ import { CodeSnippet } from "../components/code-snippet";
 import { PageLayout } from "../components/page-layout";
 import { getAdminResource } from "../services/message.service";
 import { AdminMenu } from "../components/admin-menu";
-import ViewSite from "../components/admin-components/viewSite";
+import ViewSiteAdmin from "../components/admin-components/viewSiteAdmin";
+import ViewSiteUser from "../components/multiview-site";
 
 export const MultiSitePage = () => {
   // const [message, setMessage] = useState("");
@@ -62,7 +63,7 @@ export const MultiSitePage = () => {
   return (
     // <div>
     <PageLayout>
-      <ViewSite />
+      <ViewSiteUser />
     </PageLayout>
     
     // </div>
