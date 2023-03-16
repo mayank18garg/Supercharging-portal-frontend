@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { PageLayout } from "../components/page-layout";
 
@@ -9,9 +9,10 @@ import { Navigate } from "react-router-dom";
 // import {  } from "react-router-dom";
 export const HomePage = () => {
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
-  if(location.state == null){
+
+  if(location.state == null || location.state.site_id == null){
     return <Navigate replace to="/admin" />;
   }
 

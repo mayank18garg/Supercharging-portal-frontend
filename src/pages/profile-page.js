@@ -14,7 +14,7 @@ export const ProfilePage = () => {
   const [trt_Id, settrt_Id] = useState(location.state ? location.state.site_id : "");
 
   console.log(location);
-  if(location.state == null){
+  if(location.state == null || location.state.site_id == null){
     return <Navigate replace to="/admin" />;
   }
 

@@ -14,7 +14,7 @@ export const PublicPage = () => {
 
   const [issueTicketData, setissueTicketData] = useState(false);
 
-  if(location.state == null){
+  if(location.state == null || location.state.site_id == null){
     return <Navigate replace to="/admin" />;
   }
   const trt_id = location.state ? location.state.site_id : "";
