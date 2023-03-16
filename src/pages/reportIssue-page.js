@@ -6,7 +6,7 @@ import { FormThemeProvider } from 'react-component-form'
 import { FormComp } from "../components/Issue-Ticket/FormComp";
 import IssueTictable from "../components/Issue-Ticket/IssueTictable";
 import { Navigate, useLocation } from "react-router-dom";
-export const PublicPage = () => {
+export const ReportIssuePage = () => {
 //   const [message, setMessage] = useState("");
   const location = useLocation();
   console.log(location);

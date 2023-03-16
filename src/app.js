@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import { AdminPage } from "./pages/admin-page";
+import { MultiSitePage } from "./pages/multiSite-page";
 import { HomePage } from "./pages/home-page";
 import { NotFoundPage } from "./pages/not-found-page";
-import { ProfilePage } from "./pages/profile-page";
+import { DashboardPage } from "./pages/dashboard-page";
 import { ProtectedPage } from "./pages/protected-page";
-import { PublicPage } from "./pages/public-page";
+import { ReportIssuePage } from "./pages/reportIssue-page";
 import { CallbackPage } from "./pages/callback-page";
 import {AuthenticationGuard} from "./components/authentication-guard";
 import { PageLoader } from "./components/page-loader";
@@ -39,13 +39,13 @@ export const App = () => {
         element={<HomePage/>}
       />
       <Route 
-        path="/profile" 
-        element={<AuthenticationGuard component={ProfilePage} />}
+        path="/dashboard"
+        element={<AuthenticationGuard component={DashboardPage} />}
       />
-      <Route path="/public" element={<PublicPage />} />
+      <Route path="/reportIssue" element={<ReportIssuePage />} />
       <Route path="/protected" element={<ProtectedPage />} />
       <Route element={<PrivateRoute /> }>
-        <Route path="/" exact element={<AdminPage />} />
+        <Route path="/" exact element={<MultiSitePage />} />
       </Route>
       
       <Route path="*" element={<NotFoundPage />} />

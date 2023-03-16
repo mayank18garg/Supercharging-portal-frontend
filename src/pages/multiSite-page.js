@@ -5,7 +5,7 @@ import { getAdminResource } from "../services/message.service";
 import { AdminMenu } from "../components/admin-menu";
 import ViewSite from "../components/admin-components/viewSite";
 
-export const AdminPage = () => {
+export const MultiSitePage = () => {
   // const [message, setMessage] = useState("");
 
   // useEffect(() => {

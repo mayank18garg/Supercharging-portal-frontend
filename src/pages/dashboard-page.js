@@ -8,7 +8,7 @@ import { SitePicker } from "../components/Dashboard-charts/SitePicker";
 import { useLocation} from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-export const ProfilePage = () => {
+export const DashboardPage = () => {
   const location = useLocation();
   const [dateData, setdateData] = useState({start_date: "2018-02-04", end_date: "2018-03-03"});
   const [trt_Id, settrt_Id] = useState(location.state ? location.state.site_id : "");
