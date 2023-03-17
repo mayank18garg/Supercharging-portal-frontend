@@ -7,6 +7,7 @@ import { DateCalendar } from "../components/Dashboard-charts/DateCalendar";
 import { SitePicker } from "../components/Dashboard-charts/SitePicker";
 import { useLocation} from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 
 export const DashboardPage = () => {
   const location = useLocation();
@@ -20,10 +21,9 @@ export const DashboardPage = () => {
 
   return (
     <PageLayout site_id={location.state.site_id} site_name={location.state.site_name}>
-      {/* <div className="content-layout"> */}
-        <h2 id="page-title" className="content__title">
-          {location.state.site_name}
-        </h2>
+      <SideNavBar site_id={location.state.site_id} site_name={location.state.site_name} />
+      <div className="content-layout">
+      <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Dashboard</h2>
         <div className="chart-grid-input">
           {/* <div className="chart-grid-site"> */}
           {/* <SitePicker settrt_Id={settrt_Id} /> */}
@@ -42,7 +42,7 @@ export const DashboardPage = () => {
         </div>
         
         
-      {/* </div> */}
+      </div>
     </PageLayout>
   );
 

@@ -6,6 +6,8 @@ import { FormThemeProvider } from 'react-component-form'
 import { FormComp } from "../components/Issue-Ticket/FormComp";
 import IssueTictable from "../components/Issue-Ticket/IssueTictable";
 import { Navigate, useLocation } from "react-router-dom";
+import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
+
 export const ReportIssuePage = () => {
 //   const [message, setMessage] = useState("");
   const location = useLocation();
@@ -21,15 +23,11 @@ export const ReportIssuePage = () => {
   const site_name = location.state ? location.state.site_name : "";
   return (
     <PageLayout site_id={location.state.site_id} site_name={location.state.site_name}>
-      
-      <h2 id="page-title" className="content__title">
-          {location.state.site_name}
-      </h2>
+      <SideNavBar site_id={location.state.site_id} site_name={location.state.site_name} />
+      <div className="content-layout">
+      <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Report a New Issue</h2>
       <div className="form-grid-container">
         <IssueTictable trt_id={trt_id} issueTicketData={issueTicketData} />
-        <h3 id="page-title" className="content__title" style={{textAlign: 'center'}}>
-          Report a New Issue
-        </h3>
         
           <FormComp trt_id={trt_id} site_name={site_name} issueTicketData={issueTicketData} setissueTicketData={setissueTicketData} />
           
@@ -46,6 +44,7 @@ export const ReportIssuePage = () => {
           <CodeSnippet title="Public Message" code={message} />
         </div> */}
       </div>   
+      </div>
     </PageLayout>
   );
 };
