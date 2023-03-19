@@ -174,3 +174,43 @@ export const getUserData = async(userEmail) => {
     error,
   };
 }
+
+export const getContactInfo = async(userEmail) => {
+  const config = {
+    url: `${apiServerUrl}/api/contactInfo/getContact/`,
+    method: "GET",
+    params:{
+      userEmail: userEmail
+    },
+    headers:{
+      "Content-Type": "application/json"
+    }
+  };
+
+  const {data, error} = await callExternalApi({config});
+
+  return {
+    data: data || null,
+    error,
+  };
+}
+
+export const updateContactInfo = async({userEmail, formValue}) => {
+  const config = {
+    url: `${apiServerUrl}/api/contactInfo/updateContact/`,
+    method: "PUT",
+    data:{
+      userEmail,
+      formValue
+    },
+    headers:{
+      "Content-Type": "application/json"
+    }
+  }
+  const {data, error} = await callExternalApi({config});
+
+  return {
+    data: data || null,
+    error,
+  }
+}
