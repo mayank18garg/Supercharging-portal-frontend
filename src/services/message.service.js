@@ -214,3 +214,45 @@ export const updateContactInfo = async({userEmail, formValue}) => {
     error,
   }
 }
+
+export const getSiteInfo = async(userEmail, trt_id) => {
+  const config = {
+    url: `${apiServerUrl}/api/siteInfo/getSite/`,
+    method: "GET",
+    params:{
+      userEmail: userEmail,
+      trt_id: trt_id
+    },
+    headers:{
+      "Content-Type": "application/json"
+    }
+  };
+
+  const {data, error} = await callExternalApi({config});
+
+  return {
+    data: data || null,
+    error,
+  };
+}
+
+export const updateSiteInfo = async({userEmail, trt_id, formValue}) => {
+  const config = {
+    url: `${apiServerUrl}/api/siteInfo/updateSite/`,
+    method: "PUT",
+    data:{
+      userEmail,
+      trt_id,
+      formValue
+    },
+    headers:{
+      "Content-Type": "application/json"
+    }
+  }
+  const {data, error} = await callExternalApi({config});
+
+  return {
+    data: data || null,
+    error,
+  }
+}
