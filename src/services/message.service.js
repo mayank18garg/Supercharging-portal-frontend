@@ -215,7 +215,7 @@ export const updateContactInfo = async({userEmail, formValue}) => {
   }
 }
 
-export const getSiteInfo = async(userEmail, trt_id) => {
+export const getSiteInfo = async({userEmail, trt_id}) => {
   const config = {
     url: `${apiServerUrl}/api/siteInfo/getSite/`,
     method: "GET",

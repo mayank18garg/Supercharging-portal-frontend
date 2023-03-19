@@ -1,16 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, useToaster } from 'rsuite';
-import { getContactInfo } from '../../services/message.service';
+import { getSiteInfo } from '../../services/message.service';
 import { useAuth0 } from '@auth0/auth0-react';
-import { updateContactInfo } from '../../services/message.service';
+import { updateSiteInfo } from '../../services/message.service';
 
 const { StringType } = Schema.Types;
 
 const model = Schema.Model({
-  firstName: StringType().isRequired('This field is required.'),
-  lastName: StringType().isRequired('This field is required.'),
-  phone: StringType().isRequired('This field is required.'), 
-  address: StringType().isRequired('This field is required.')
+  siteName: StringType().isRequired('This field is required.'),
+  siteWebsite: StringType().isRequired('This field is required.'),
+  siteAddress: StringType().isRequired('This field is required.'), 
+  phone: StringType().isRequired('This field is required.')
 });
 
 function TextField(props) {
@@ -35,16 +35,16 @@ const errormessage = (
   </Message>
 );
 
-export const ContactInfoForm = () => {
+export const SiteInfoForm = ({trt_id}) => {
     const { user } = useAuth0();
     const userEmail = user.name;
     const [message, setMessage] = useState({});
     const [readOnly, setReadOnly] = useState(true);
     const [formValue, setFormValue] = useState({
-        firstName:"",
-        lastName: "",
-        phone: "",
-        address: ""
+        siteName:"",
+        siteWebsite: "",
+        siteAddress: "",
+        phone: ""
     });
     const toaster = useToaster();
     const placement = 'topCenter';
@@ -52,7 +52,7 @@ export const ContactInfoForm = () => {
     useEffect(() => {
         let isMounted = true;
         const getMessage = async () => {
-          const {data, error} = await getContactInfo(userEmail);
+          const {data, error} = await getSiteInfo({userEmail, trt_id});
           if(!isMounted){
             return;
           }
@@ -60,10 +60,10 @@ export const ContactInfoForm = () => {
           if(data){
             setMessage(data);
             setFormValue({
-                firstName: data.contact.firstName,
-                lastName: data.contact.lastName,
-                phone: data.contact.phone,
-                address: data.contact.address
+                siteName: data.siteName,
+                siteWebsite: data.siteWebsite,
+                siteAddress: data.siteAddress,
+                phone: data.phone
             })
           }
     
@@ -77,7 +77,7 @@ export const ContactInfoForm = () => {
         return () => {
           isMounted = false;
         };
-    }, []);
+    }, [userEmail, trt_id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -87,17 +87,18 @@ export const ContactInfoForm = () => {
         }
         console.log("inside_handleSubmit", formValue);
 
-        updateContactInfo({userEmail, formValue}).then((response) => {
+        updateSiteInfo({userEmail, trt_id, formValue}).then((response) => {
             if(response.data == null || response.data.error){
                 toaster.push(errormessage,{placement, duration: 5000} );
                 return;
             }
             else{
+                console.log(response);
                 setFormValue({
-                    firstName: response.data.firstName,
-                    lastName: response.data.lastName,
-                    phone: response.data.phone,
-                    address: response.data.address
+                    siteName: response.data.siteName,
+                    siteWebsite: response.data.siteWebsite,
+                    siteAddress: response.data.siteAddress,
+                    phone: response.data.phone
                 })
                 toaster.push(successmessage, {placement, duration: 5000});
                 setReadOnly(!readOnly);
@@ -105,26 +106,15 @@ export const ContactInfoForm = () => {
         }).catch((error) => {
             console.log(error);
         });
-
-        // document.getElementById("title-3").value = "";
-        // document.getElementById("type-3").value = "";
-        // document.getElementById("description-3").value = "";
-        
-        // setFormValue({
-        //   title: "",
-        //   type: "",
-        //   description: ""
-        // });         
-        // setissueTicketData(!issueTicketData);
     }
 
     return (
         <CustomProvider theme='dark'>
             <Form ref={formRef} model={model} onChange={setFormValue} formValue={formValue} readOnly={readOnly}>
-                <TextField name="firstName" label="First Name" />
-                <TextField name="lastName" label="Last Name" />
+                <TextField name="siteName" label="Property Name" />
+                <TextField name="siteWebsite" label="Commerical Website" />
+                <TextField name="siteAddress" label="Site Address" />
                 <TextField name="phone" label="Phone" />
-                <TextField name="address" label="Address" />
                 <ButtonToolbar>
                     {
                         readOnly ?

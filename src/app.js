@@ -7,6 +7,7 @@ import { DashboardPage } from "./pages/dashboard-page";
 import { ProtectedPage } from "./pages/protected-page";
 import { ReportIssuePage } from "./pages/reportIssue-page";
 import { CallbackPage } from "./pages/callback-page";
+import { SiteInfoPage } from "./pages/siteInfo-page";
 import {AuthenticationGuard} from "./components/authentication-guard";
 import { PageLoader } from "./components/page-loader";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -50,6 +51,10 @@ export const App = () => {
       <Route
         path="/"
         element={<AuthenticationGuard component={MultiSitePage} />}
+      />
+      <Route
+        path="/siteInfo"
+        element={<AuthenticationGuard component={SiteInfoPage} />}
       />
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/callback" element={<CallbackPage />} />

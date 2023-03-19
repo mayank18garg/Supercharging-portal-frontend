@@ -13,6 +13,7 @@ export const SideNavBar = ({site_id, site_name, viewSiteEnable}) => {
             <SideNavBarTab path="/dashboard" label="Dashboard" site_id={site_id} site_name={site_name} />
             <SideNavBarTab path="/reportIssue" label="Issue a New Request" site_id={site_id} site_name={site_name} />
             <SideNavBarTab path="/protected" label="Contact Information" site_id={site_id} site_name={site_name} />
+            <SideNavBarTab path="/siteInfo" label="Site Information" site_id={site_id} site_name={site_name} />
         </div>
     );
 }
