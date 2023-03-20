@@ -1,12 +1,16 @@
 import React from "react";
 import { SideNavBarTab } from "./side-nav-bar-tab";
 
-export const SideNavBar = ({site_id, site_name, viewSiteEnable}) => {
+export const SideNavBar = ({site_id, site_name, viewSiteEnable, isAdmin}) => {
 
     return ( 
         viewSiteEnable ? 
         <div className="side-nav-bar__container">
-            <SideNavBarTab label="Site Selection"  />
+            <SideNavBarTab path="/" label="Site Selection"  />
+            {   isAdmin ?
+                    <SideNavBarTab path="/onboarding" label="Onboarding" isAdmin={isAdmin} />
+                    : null
+            }
         </div> :
         <div className="side-nav-bar__container">
             <SideNavBarTab path="/home" label="Home" site_id={site_id} site_name={site_name} />

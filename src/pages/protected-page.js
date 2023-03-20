@@ -10,13 +10,13 @@ import { ContactInfoForm } from "../components/contact-information/contactInfoFo
 export const ProtectedPage = () => {
   const location = useLocation();
 
-  // if(location.state == null || location.state.site_id == null){
-  //   return <Navigate replace to="/" />;
-  // }
+  if(location.state == null || location.state.site_id == null){
+    return <Navigate replace to="/" />;
+  }
 
   return (
-    <PageLayout>
-       <SideNavBar  />
+    <PageLayout site_id={location.state.site_id} site_name={location.state.site_name}>
+       <SideNavBar site_id={location.state.site_id} site_name={location.state.site_name}  />
        <div className="content-layout">
         <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Contact Information</h2>
         <ContactInfoForm />

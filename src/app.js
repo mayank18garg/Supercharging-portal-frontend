@@ -16,6 +16,7 @@ import { PrivateRoute } from "./utils/private-route";
 
 import {Chart as ChartJS} from "chart.js/auto";
 import { Colors } from "chart.js/auto";
+import { OnboardingPage } from "./pages/onboarding-page";
 
 export const App = () => {
   ChartJS.register(Colors);
@@ -45,9 +46,9 @@ export const App = () => {
       />
       <Route path="/reportIssue" element={<ReportIssuePage />} />
       <Route path="/protected" element={<ProtectedPage />} />
-      {/* <Route element={<PrivateRoute /> }>
-        <Route path="/" exact element={<MultiSitePage />} />
-      </Route> */}
+      <Route element={<PrivateRoute /> }>
+        <Route path="/onboarding" exact element={<OnboardingPage />} />
+      </Route>
       <Route
         path="/"
         element={<AuthenticationGuard component={MultiSitePage} />}

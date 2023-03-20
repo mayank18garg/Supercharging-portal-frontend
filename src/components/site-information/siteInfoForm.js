@@ -35,7 +35,7 @@ const errormessage = (
   </Message>
 );
 
-export const SiteInfoForm = ({trt_id}) => {
+export const SiteInfoForm = ({trt_id, setSite_name}) => {
     const { user } = useAuth0();
     const userEmail = user.name;
     const [message, setMessage] = useState({});
@@ -95,11 +95,12 @@ export const SiteInfoForm = ({trt_id}) => {
             else{
                 console.log(response);
                 setFormValue({
-                    siteName: response.data.siteName,
-                    siteWebsite: response.data.siteWebsite,
-                    siteAddress: response.data.siteAddress,
-                    phone: response.data.phone
+                    siteName: response.data[0].siteName,
+                    siteWebsite: response.data[0].siteWebsite,
+                    siteAddress: response.data[0].siteAddress,
+                    phone: response.data[0].phone
                 })
+                setSite_name(response.data[0].siteName);
                 toaster.push(successmessage, {placement, duration: 5000});
                 setReadOnly(!readOnly);
             }

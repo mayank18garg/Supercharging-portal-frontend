@@ -45,10 +45,15 @@ export const MultiSitePage = () => {
     const adminRoles = ['Admin'];
     const userRoles = ['User']
     console.log(token);
+    let isAdmin = false;
+    if(token?.find(role => adminRoles.includes(role))){
+      isAdmin= true;
+    }
+
   return (
     // <div>
     <PageLayout viewSiteEnable={true}>
-      <SideNavBar viewSiteEnable={true} />
+      <SideNavBar viewSiteEnable={true} isAdmin={isAdmin} />
       <div className="content-layout">
       <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> MultiSite View</h2>
       {token?.find(role => adminRoles.includes(role)) ? <ViewSiteAdmin />
