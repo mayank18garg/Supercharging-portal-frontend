@@ -175,12 +175,13 @@ export const getUserData = async(userEmail) => {
   };
 }
 
-export const getContactInfo = async(userEmail) => {
+export const getContactInfo = async({trt_id, contactType}) => {
   const config = {
     url: `${apiServerUrl}/api/contactInfo/getContact/`,
     method: "GET",
     params:{
-      userEmail: userEmail
+      trt_id,
+      contactType
     },
     headers:{
       "Content-Type": "application/json"
@@ -195,12 +196,13 @@ export const getContactInfo = async(userEmail) => {
   };
 }
 
-export const updateContactInfo = async({userEmail, formValue}) => {
+export const updateContactInfo = async({trt_id, contactType, formValue}) => {
   const config = {
     url: `${apiServerUrl}/api/contactInfo/updateContact/`,
     method: "PUT",
     data:{
-      userEmail,
+      trt_id,
+      contactType,
       formValue
     },
     headers:{

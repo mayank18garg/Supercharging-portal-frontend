@@ -1,18 +1,12 @@
 
 
-.chart-grid-input{
+
+.chart-grid-date{
     display: flex;
     justify-content: space-around;
     width: 100%;
-}
-
-.chart-grid-date{
-    /* background-color: white; */
-    /* width: 50px; */
-    /* border-width: 5px; */
-  /* border-color: red; */
-  /* border-style: dashed; */
-  /* padding: 5px; */
+    /* background-color: aqua; */
+    /* align-self:center; */
 }
 
 .chart-grid-site{

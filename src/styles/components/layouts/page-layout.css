@@ -5,7 +5,22 @@
   /* justify-content: left; */
   height: 100%;
   width: 100%;
+
+  --bg-image:  url("../../../utils/peakpx.jpg");
+   --bg-image-opacity: 0.4;
+   position:relative;
   
+}
+.page-layout::after{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: black;
+  opacity: var(--bg-image-opacity);
+  background-size:    cover;                   
+  background-position: center;
+  background-image: var(--bg-image);
 }
 
 .page-layout__content {
@@ -22,8 +37,23 @@
   /* max-width: 100%; */
   /* justify-content: space-around; */
   width: 100%;
+
+  /* --bg-image:  url("../../../utils/peakpx.jpg");
+   --bg-image-opacity: 0.4;
+   position:relative; */
   
 }
+/* .page-layout__content::after{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: black;
+  opacity: var(--bg-image-opacity);
+  background-size:    cover;                   
+  background-position: center;
+  background-image: var(--bg-image);
+} */
 
 @media only screen and (max-width: 640px) {
   .page-layout__content {

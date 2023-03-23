@@ -13,6 +13,7 @@ import { getUserData} from '../services/message.service';
 import { PageLoader } from './page-loader';
 import {NavLink} from "react-router-dom"
 import { useAuth0 } from '@auth0/auth0-react';
+import { BorderStyle } from '@mui/icons-material';
 
 // import { makeStyles } from '@mui/material/styles';
 
@@ -30,12 +31,14 @@ const columns = [
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: 'rgba(90, 80, 255, 0.85)',
-      color: theme.palette.common.white,
-      fontSize: 20
+      // backgroundColor: 'rgba(90, 80, 255, 0.85)',
+      // color: theme.palette.common.white,
+      fontSize: 20,
+      // borderColor: "white"
     },
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
+      // borderColor: "white"
     },
   }));
 
@@ -83,8 +86,8 @@ export default function ViewSiteUser() {
   };
 
   return (
-    <Paper sx={{ width: 700, overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 4400 }}>
+    <Paper sx={{ width: 700, overflow: 'hidden', background:"transparent", borderColor: "white", borderStyle: "solid" }}>
+      <TableContainer sx={{ maxHeight: 4400, borderColor: "white" }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

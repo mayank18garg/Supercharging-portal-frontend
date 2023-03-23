@@ -85,7 +85,6 @@ export const ContactInfoForm = () => {
             console.error("Form Error");
             return;
         }
-        console.log("inside_handleSubmit", formValue);
 
         updateContactInfo({userEmail, formValue}).then((response) => {
             if(response.data == null || response.data.error){

@@ -38,11 +38,13 @@ const columns = [
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: 'rgba(90, 80, 255, 0.85)',
-      color: theme.palette.common.white,
+      // backgroundColor: 'rgba(90, 80, 255, 0.85)',
+      borderColor: "white",
+      // color: theme.palette.common.white,
       fontSize: 20
     },
     [`&.${tableCellClasses.body}`]: {
+      borderColor:"white",
       fontSize: 14,
     },
   }));
@@ -109,8 +111,8 @@ export default function IssueTicTable({trt_id, issueTicketData}) {
   };
 
   return (
-    <Paper sx={{ width: 700, overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 4400 }}>
+    <Paper sx={{ width: 700, overflow: 'hidden', background:"transparent", borderColor:"white", borderStyle:"solid" }}>
+      <TableContainer sx={{ maxHeight: 4400, backgroundColor:"transparent" }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
